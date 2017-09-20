@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "build": "babel --watch src --out-file bundle.js",
+    "launch": "nodemon --watch",
+    "start": "npm-run-all --parallel launch build"
+  },
+  "name": "express_starters1",
+  "version": "1.0.0",
+  "main": "bundle.js",
+  "repository": "https://github.com/GossJS/express_starters1.git",
+  "author": "GossJS",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "nodemon": "^1.12.1",
+    "npm-run-all": "^4.1.1"
+  },
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
