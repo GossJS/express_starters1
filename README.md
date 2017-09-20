@@ -19,7 +19,7 @@ min starter express code built live in classroom
 
   1. Затем мы добавляем nodemon и npm-run-all и соответствующие скрипты, а также обработку ошибок. Это ветвь step1
 
-  2. Затем мы добавляем http, http.createServer(app).listen и  логирующее middleware. Это ветвь step2
+  2. Затем мы добавляем http, http.createServer(app).listen,  логирующее middleware и   middleware отдачи файлов. Это ветвь step2
 
   3. Затем мы реализуем простейшую параметризацию и после этого - задание API-калькулятор. Это ветвь step3
 
@@ -27,4 +27,4 @@ min starter express code built live in classroom
 
 
 
-  Далее следующий репозиторий: middleware отдачи файлов, морган, парсер body и реализуем post. (по мотивам step6)
+  Далее следующий репозиторий: , морган, парсер body и реализуем post. (по мотивам step6)
