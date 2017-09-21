@@ -1,3 +1,5 @@
-{"execMap": {
+{
+  "execMap": {
     "mjs": "node --experimental-modules"
-  }}
+  }
+}
