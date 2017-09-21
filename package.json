@@ -3,9 +3,9 @@
     "start": "nodemon --watch"
   },
   "name": "express_starters1",
-  "version": "1.0.0",
-  "engines" : { 
-    "node" : ">=8.5.0" 
+  "version": "1.0.2",
+  "engines" : {
+    "node" : ">=8.5.0"
   },
   "main": "index.mjs",
   "repository": "https://github.com/GossJS/express_starters1.git",
