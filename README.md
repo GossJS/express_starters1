@@ -17,9 +17,11 @@ min starter express code built live in classroom
 
   `./node_modules/babel-cli/bin/babel-node.js ./src/index.js`
 
-  1. Затем мы добавляем nodemon и npm-run-all и соответствующие скрипты, а также обработку ошибок. Это ветвь step1
+  1. Затем мы добавляем nodemon и npm-run-all и соответствующие скрипты, а также обработку ошибок. Это ветвь step1 (git checkout step1)
 
   2. Затем мы добавляем http, http.createServer(app).listen,  логирующее middleware и   middleware отдачи файлов. Это ветвь step2
+  
+  2б. Вариант для v8.5.0 (скрипт start делает node --experimental-modules ./src/index.mjs ) step2b
 
   3. Затем мы реализуем простейшую параметризацию и после этого - задание API-калькулятор. Это ветвь step3
 
