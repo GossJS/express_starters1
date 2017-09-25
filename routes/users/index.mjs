@@ -17,8 +17,11 @@ export default x=>{
       })
     .post(r=>r.res.end('does not do anything') )
   ;
+
+
+
   rtr
-    .route('/add/:login/:password')
+    .route('/:login/:password')
     .get(r=>r.res.end('You should use POST for that') )
     .post(async r=> {
        const j = await jsonfile.readFile(PATH);
@@ -32,8 +35,28 @@ export default x=>{
        } else {
          r.res.send('User already exists');
        }
-       //_.mapKeys
     })
-  ;
+    .delete(async r=> {
+        const j = await jsonfile.readFile(PATH);
+        const {login, password} = r.params;
+        const foundUser = _.find(j.users, {login});
+        if ( foundUser) {
+          if (foundUser.password == password) {
+             if (j.users.length>3) {
+                 _.remove(j.users, u=> u.login == login);
+                 await jsonfile.writeFile(PATH,j);
+                 r.res.json({login, password})
+             }  else {
+                 r.res.send('Too few users!');
+             }
+          } else {
+            r.res.send('You do not have permission to delete');
+          }
+        } else {
+          r.res.send('User already does not exist');
+        }
+    })
+;
+
   return rtr;
 }
