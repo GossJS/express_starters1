@@ -3,12 +3,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import myR from './routes/my';
+import usersR from './routes/users';
 
 
 
 import compression from 'compression';
 const PORT=4321;
 const app=express();
+
 app
   .use(express.static('public'))
   .use(bodyParser.json())
@@ -18,6 +20,7 @@ app
   .use((r,res,n)=>n())
 
   .use('/my', myR(express))
+  .use('/users', usersR(express))
 
   .get(/hello/,r=>r.res.end('Hello world!'))
 
