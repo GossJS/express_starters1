@@ -1,6 +1,6 @@
 import jsonfile  from 'jsonfile-promised';
 import path from 'path';
-const PATH = path.resolve('../../users.json');
+const PATH = path.resolve('./users.json');
 
 
 
