@@ -4,10 +4,10 @@
   },
   "name": "express_starters1",
   "version": "1.0.2",
-  "engines" : {
-    "node" : ">=8.5.0"
+  "engines": {
+    "node": ">=8.5.0"
   },
-  "main": "index.mjs",
+  "main": "simpletest.mjs",
   "repository": "https://github.com/GossJS/express_starters1.git",
   "author": "GossJS",
   "license": "MIT",
@@ -15,6 +15,6 @@
     "nodemon": "^1.12.1"
   },
   "dependencies": {
-    "express": "^4.15.4"
+    "axios": "^0.16.2"
   }
 }
