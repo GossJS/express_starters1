@@ -15,7 +15,7 @@ export default x=>{
     .route('/')
     .get(r=>{
         jsonfile.readFile(PATH).then(x=>{
-          const result = '<ul>'+ j.users.map(x=>`<li>${x.login}</li>`).join(' ') + '</ul>';
+          const result = '<ul>'+ x.users.map(x=>`<li>${x.login}</li>`).join(' ') + '</ul>';
           r.res.send(result);
         });
 
