@@ -1,5 +1,6 @@
 import jsonfile  from 'jsonfile-promised';
-const PATH = '/Users/goss/app3-25092017/app4-25092017/users.json';
+import path from 'path';
+const PATH = path.resolve('../../users.json');
 
 
 
