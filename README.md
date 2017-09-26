@@ -28,12 +28,22 @@ min starter express code built live in classroom
   3. Затем мы реализуем простейшую параметризацию и простейший роутер. Это ветвь step3esm
 
   4. Мы тестируем приложение с маршрутами типа /add/5/6 c помощью step4esm
+  
+   https://kodaktor.ru/g/route.tester
 
   5. Далее мы имитируем работу с БД, используя в качестве исходного БД kodaktor.ru/j/users
-  и lodash (т.к. вещи типа object spread требуют stage-0) - это step5esm
+  и lodash (т.к. вещи типа object spread требуют stage-0) - для операций с файлами используется jsonfile-promised в форме async/await - это step5esm
+  
+  6. Реализация DELETE - step6esm (на этом этапе добавление пользователя это POST /users/:login/:password, а удаление это DELETE /users/:login/:password и удалять можно только   зная пароль удаляемого пользователя - но они все открыты)
+  
+  7. POST посылает не параметрами URL, а в JSON - step7esm
+  
+  8. пароль сохраняется в md5 и удалять можно теперь только себя и открытых пользователей, добавляется форма, делающая AJAX-запросы, учитывается CORS  - step8esm
 
-  https://kodaktor.ru/g/route.tester
+ 
 
 
-
-  Далее следующий репозиторий: , морган, парсер body и реализуем post. (по мотивам step6)
+  Далее вводится Mongoose и соответствующая замена обращений к файлам на обращения к соединению... model.save()
+  
+  !Задание после этой части - разработка qLogger API по его спецификации
+  
