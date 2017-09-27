@@ -1,6 +1,7 @@
 import jsonfile  from 'jsonfile-promised';
 import path from 'path';
 const PATH = path.resolve('./users.json');
+//WAS: path.resolve(__dirname, 'users.json')
 
 import _ from 'lodash';
 
@@ -11,10 +12,12 @@ export default x=>{
     .route('/')
     .get(async r=>{
         const j = await jsonfile.readFile(PATH);
-        const result = '<ul>'+ j.users.map(x=>`<li>${x.login}</li>`).join(' ') + '</ul>';
+        const result = `<ul>${j.users.map(x=>`<li>${x.login}</li>`).join(' ')}</ul>`;
         r.res.send(result);
 
       })
+
+
     .post(r=>r.res.end('does not do anything') )
   ;
   rtr
