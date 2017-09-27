@@ -1,6 +1,7 @@
 import http from 'http';
 import express from 'express';
 import bodyParser from 'body-parser';
+import Timer from 'timerpromise';
 
 import myR from './routes/my';
 import usersR from './routes/users';
@@ -22,8 +23,27 @@ app
   .use('/my', myR(express))
   .use('/users', usersR(express))
 
-  .get(/hello/,r=>r.res.end('Hello world!'))
+  .get('/hello/:time',r=>{
+          ( new Timer(r.params.time) ).start
+            .then(  x=> r.res.end(`Hello, ${r.params.time}`))
+         ;
+      })
 
+  .get('/hello2/:time',r=>{
+          (async()=>{
+              await ( new Timer(r.params.time) ).start;
+              r.res.end(`Hello2, ${r.params.time}`);
+          })();
+      })
+
+
+  .get('/hello3/:time',async r=>{
+          await ( new Timer(r.params.time) ).start;
+          r.res.end(`Hello3, ${r.params.time}`);
+      })
+
+
+  .get(/hello/,r=>r.res.end('Hello world!'))
   .get('/add/:a/:b',r=> r.res.end(String(Number(r.params.a)+Number(r.params.b))))
 
   .get('/err',()=>{throw 'Bad thing happened!'})
