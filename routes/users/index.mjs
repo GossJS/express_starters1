@@ -1,7 +1,8 @@
-import jsonfile  from 'jsonfile-promised';
-import path from 'path';
+import {User} from '../../bd/mongoconn';
+import bodyParser from 'body-parser';
 import _ from 'lodash';
-const PATH = path.resolve('./users.json');
+
+
 
 export default x=>{
   const rtr = x.Router();
@@ -9,52 +10,42 @@ export default x=>{
   rtr
     .route('/')
     .get(async r=>{
-        const j = await jsonfile.readFile(PATH);
-        r.res.send(`<ol>${j.users.map(x=>`<li>${x.login}</li>`).join(' ')}</ol>`);
-      })
-    .post(async r=> {
-       const j = await jsonfile.readFile(PATH);
-       //const {login, password} = r.params;
-       const {login, password} = r.body;
-       if (!login) return r.res.end('Nothing to add');
-       if ( ! _.find(j.users, {login})   ) {
-         j.users.push( {login, password}  );
-         await jsonfile.writeFile(PATH,j);
-         r.res.json({login, password});
-       } else {
-         r.res.send('User already exists');
-       }
+        const list = await User.find();
+        r.res.json(
+          list.map( x=> {
+               const {username, password} = x;
+               return {login: username, password};
+          })
+        )
+        //r.res.json( list.map ( x=> ({  login: x.username  }) ) );
     })
+    .post(async r=> {
+       const {username, password} = r.body;
+       const x  = await User.findOne({username, password});
+       if (x) return r.res.send('User already exists!');
+       const newUser = new User( {username, password} );
+       r.res.json( await newUser.save() );
 
+    })
+    .delete(async r=> {
+       // удаление пользователя (см. r.body)
+       // User.remove
+    })
+    .put(async r=> {
+       // обновления пользователя (см. r.body)
+       // User.update
+    })
   ;
 
-
-
   rtr
-    .route('/:login/:password')
-    .get(r=>r.res.end('You should use DELETE for that') )
-    .delete(async r=> {
-        const j = await jsonfile.readFile(PATH);
-        const {login, password} = r.params;
-        if (!login) return r.res.end('Nothing to delete');
-        const foundUser = _.find(j.users, {login});
-        if ( foundUser) {
-          if (foundUser.password == password) {
-             if (j.users.length>3) {
-                 _.remove(j.users, u=> u.login == login);
-                 await jsonfile.writeFile(PATH,j);
-                 r.res.json({login, password})
-             }  else {
-                 r.res.send('Too few users!');
-             }
-          } else {
-            r.res.send('You do not have permission to delete');
-          }
-        } else {
-          r.res.send('User already does not exist');
-        }
+    .route('/:username')
+    .get(async r=>{
+        const {username} = r.params;
+        const result = await User.findOne({username});
+        r.res.json( result  )
     })
-;
+  ;
+
 
   return rtr;
 }
