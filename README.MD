@@ -6,9 +6,9 @@ git clone https://github.com/GossJS/express_starters1.git x && cd x && git check
 
 git clone -b step7esm https://github.com/GossJS/express_starters1.git x && cd x
 
-yarn install
+yarn 
 
-yarn start
+yarn run dev:start
 
 curl localhost:4321/add/34/43
 
