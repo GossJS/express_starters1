@@ -14,13 +14,11 @@ const app=express();
 app
   .use(express.static('public'))
   .use(bodyParser.json())
-  .use(bodyParser.urlencoded({extended:true}))
-
   .use(compression())
   .use((r,res,n)=>n())
 
   .use('/my', myR(express))
-  .use('/users', usersR(express))
+  .use('/users', usersR.rtr(express))
 
   .get(/hello/,r=>r.res.end('Hello world!'))
 
