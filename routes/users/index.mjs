@@ -1,5 +1,4 @@
 import {User} from '../../bd/mongoconn';
-import _ from 'lodash';
   /* см. другую реализацию в mongoconn */
 export default class Router {
    static rtr(x) {
