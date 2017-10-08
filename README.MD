@@ -1,5 +1,7 @@
 added process.env.PORT || for Heroku etc
 
+added HTTP/2 support (spdy) + certificates
+
 
 git clone -b step8-class-h2-xprs https://github.com/GossJS/express_starters1.git x && cd x && yarn
 
