@@ -1,6 +1,8 @@
+'use strict';
 import spdy from 'spdy';
 import express from 'express';
 import bodyParser from 'body-parser';
+import morgan from 'morgan';
 import fs from 'fs';
 import myR from './routes/my';
 import usersR from './routes/users';
@@ -18,6 +20,7 @@ const options = {
 app
   .use(express.static('public'))
   .use(bodyParser.json())
+  .use(morgan('common'))
   .use(compression())
   .use((r,res,n)=>n())
 
