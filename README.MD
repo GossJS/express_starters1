@@ -1,13 +1,6 @@
 added process.env.PORT || for Heroku etc ( https://kodaktor.ru/g/heroku )
 
-
-
 git clone -b step7esm https://github.com/GossJS/express_starters1.git x && cd x
-
-или
-
-git clone https://github.com/GossJS/express_starters1.git x && cd x && git checkout step7esm
-
 
 yarn 
 
