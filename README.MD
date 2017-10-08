@@ -1,10 +1,13 @@
-git clone https://github.com/GossJS/express_starters1.git x && cd x && git checkout step2esm
+git clone -b step3esm https://github.com/GossJS/express_starters1.git x && cd x
 
 или
 
-git clone -b step2esm https://github.com/GossJS/express_starters1.git x && cd x
+git clone https://github.com/GossJS/express_starters1.git x && cd x && git checkout step3esm
 
-yarn install
+ 
+
+
+yarn  
 
 yarn start
 
