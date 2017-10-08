@@ -1,7 +1,7 @@
-import http from 'http';
+import spdy from 'spdy';
 import express from 'express';
 import bodyParser from 'body-parser';
-
+import fs from 'fs';
 import myR from './routes/my';
 import usersR from './routes/users';
 
@@ -10,6 +10,10 @@ import usersR from './routes/users';
 import compression from 'compression';
 const PORT=4321;
 const app=express();
+const options = {
+  key: fs.readFileSync('ssl2/server.key'),
+  cert:  fs.readFileSync('ssl2/server.crt')
+};
 
 app
   .use(express.static('public'))
@@ -30,7 +34,7 @@ app
   .use(r=>r.res.status(404).end('Still not here, sorry!'))
   .use((e,r,res,n)=>res.status(500).end(`Error: ${e}`))
 ;
-http
-  .createServer(  app  )
+spdy
+  .createServer(options,  app  )
   .listen(process.env.PORT || PORT, ()=>console.log(process.pid))
 ;
