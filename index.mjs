@@ -18,6 +18,7 @@ const options = {
 };
 
 app
+  .set('view engine', 'pug')
   .use(express.static('public'))
   .use(bodyParser.json())
   .use(morgan('common'))
@@ -34,7 +35,7 @@ app
   .get('/err',()=>{throw 'Bad thing happened!'})
   .get('/err2',()=>{throw 'Awful thing happened!'})
 
-  .use(r=>r.res.status(404).end('Still not here, sorry!'))
+  .use(r=>r.res.status(404).render('404', { title: `404`, head1: `Still not here!` }))
   .use((e,r,res,n)=>res.status(500).end(`Error: ${e}`))
 ;
 spdy

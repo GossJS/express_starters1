@@ -1,0 +1,59 @@
+вот заготовка для шаблонной страницы
+
+  (https://github.com/verekia/js-stack-from-scratch/blob/master/tutorial/03-express-nodemon-pm2.md#readme)
+
+  подумайте как включить её в нашу структуру ( типа render('404', 'Please be brave!')  )
+
+
+export default renderPage = title =>
+`<!doctype html>
+<html>
+  <head>
+    <title>${title}</title>
+    <link rel="stylesheet" href="${STATIC_PATH}/css/style.css">
+  </head>
+  <body>
+    <h1>${title}</h1>
+  </body>
+</html>
+`;
+
+
+
+до этого:
+
+http://html2jade.org/
+
+
+./views/404.pug
+
+doctype html
+html
+  head
+    title Jade
+  body
+    h1(title='author') Jade - node template engine
+    #container.col
+      p You are amazing
+
+превращаем это в параметризованный шаблон
+
+doctype html
+html
+  head
+    title= title
+  body
+    h1(title='author')= head1
+    #container.col
+      p You are amazing
+
+yarn add pug
+app.set('view engine', 'pug')
+
+и далее так
+.use(r=>r.res.status(404).render('404', { title: `404`, head1: `Still not here!` }))
+ это лучше превратить в ErrorController  - ДЗ
+
+соотв. рендеры теперь должны быть в контроллерах...
+
+https://kodaktor.ru/handlebars_step1
