@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='https://kodaktor.ru/boo.css')
+  body
+    h1= title
+    .container
+      ul
+        -const list= o
+        each item in list
+          li= item.text
