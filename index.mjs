@@ -1,7 +1,8 @@
-import http from 'http';
 import express from 'express';
 import bodyParser from 'body-parser';
-
+import spdy from 'spdy';
+import fs from 'fs';
+import morgan from 'morgan';
 import myR from './routes/my';
 import usersR from './routes/users';
 
@@ -9,15 +10,23 @@ import usersR from './routes/users';
 
 import compression from 'compression';
 const PORT=4321;
+const options = {
+  key: fs.readFileSync('ssl2/server.key'),
+  cert:  fs.readFileSync('ssl2/server.crt')
+};
+
 const app=express();
+const h = spdy.createServer(options, app);
 
 app
   .use(express.static('public'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended:true}))
+  .use(morgan('common'))
 
   .use(compression())
-  .use((r,res,n)=>n())
+  .use((r,res,n)=>{n()
+  })
 
   .use('/my', myR(express))
   .use('/users', usersR.rtr(express))
@@ -33,7 +42,6 @@ app
   .use((e,r,res,n)=>res.status(500).end(`Error: ${e}`))
   .set('view engine', 'pug')
 ;
-http
-  .createServer(  app  )
+h
   .listen(process.env.PORT || PORT, ()=>console.log(process.pid))
 ;
