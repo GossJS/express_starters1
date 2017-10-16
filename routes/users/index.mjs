@@ -1,51 +1,31 @@
-import {User} from '../../bd/mongoconn';
-import bodyParser from 'body-parser';
-import _ from 'lodash';
+'use strict';
+import getUsersController from '../../controllers/get-users';
+import createUserController from '../../controllers/create-user';
+import deleteUserController from '../../controllers/delete-user';
+import updateUserController from '../../controllers/update-user';
+import getUserController from '../../controllers/get-user';
 
 
+export default class Router{
+  static rtr(x){
+    const r = x.Router();
+    r
+      .route('/')
+      .get(getUsersController)
+      .post( createUserController)
+      .delete(deleteUserController)
+      .put(updateUserController)
+    ;
 
-export default x=>{
-  const rtr = x.Router();
+    r
+      .route('/simple-list')
+      .get( r=>r.res.render('simple-list', {o: [ {login: 'Ilya'}, {login: 'Daniel'}   ]}) )
+    ;
 
-  rtr
-    .route('/')
-    .get(async r=>{
-        const list = await User.find();
-        r.res.json(
-          list.map( x=> {
-               const {username, password} = x;
-               return {login: username, password};
-          })
-        )
-        //r.res.json( list.map ( x=> ({  login: x.username  }) ) );
-    })
-    .post(async r=> {
-       const {username, password} = r.body;
-       const x  = await User.findOne({username, password});
-       if (x) return r.res.send('User already exists!');
-       const newUser = new User( {username, password} );
-       r.res.json( await newUser.save() );
-
-    })
-    .delete(async r=> {
-       // удаление пользователя (см. r.body)
-       // User.remove
-    })
-    .put(async r=> {
-       // обновления пользователя (см. r.body)
-       // User.update
-    })
-  ;
-
-  rtr
-    .route('/:username')
-    .get(async r=>{
-        const {username} = r.params;
-        const result = await User.findOne({username});
-        r.res.json( result  )
-    })
-  ;
-
-
-  return rtr;
+    r
+      .route('/:username')
+      .get( getUserController )
+    ;
+    return r;
+  }
 }

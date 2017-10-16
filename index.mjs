@@ -20,7 +20,7 @@ app
   .use((r,res,n)=>n())
 
   .use('/my', myR(express))
-  .use('/users', usersR(express))
+  .use('/users', usersR.rtr(express))
 
   .get(/hello/,r=>r.res.end('Hello world!'))
 
@@ -31,6 +31,7 @@ app
 
   .use(r=>r.res.status(404).end('Still not here, sorry!'))
   .use((e,r,res,n)=>res.status(500).end(`Error: ${e}`))
+  .set('view engine', 'pug')
 ;
 http
   .createServer(  app  )

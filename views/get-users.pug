@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title=title
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='https://kodaktor.ru/boo.css')
+  body
+    .container
+      h1=title
+      hr
+      #res.form-inline
+        -const list= o
+         each item in list
+          .input-group.mb-2.mr-sm-2.mb-sm-0
+            .input-group-addon Логин
+            input#GossJS.form-control(value= item.login, type='text', size='35')
+          .input-group.mb-2.mr-sm-2.mb-sm-0
+            .input-group-addon Пароль
+            input#author.form-control(value= item.password, type='text', size='35')

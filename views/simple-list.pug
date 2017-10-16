@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Инфо о пользователе
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='https://kodaktor.ru/boo.css')
+  body
+    .container
+      ul
+        -const list=['one', 'two', 'three']
+         each item in list
+           li= item
+      ol
+        -const list2=[{t:'aa'}, {t:'bb'}, {t:'cc'}]
+         each item in list2
+           li= item.t
+      ul
+        -const list3= o  /* ждём передачи объекта с ключом o, значением которого будет массив*/
+         each item in list3
+           li= item.login
