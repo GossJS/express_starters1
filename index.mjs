@@ -1,7 +1,7 @@
 import express from 'express';
 import fs from 'fs';
 
-const af=(fpath, line)=>new Promise((res,rej)=>fs.appendFile(fpath,line+'\n',(e,x)=>{if(e)rej(e);else res(String(x))}));
+const af=(fpath,line)=>new Promise((res,rej)=>fs.appendFile(fpath,line+'\n',(e,x)=>{if(e)rej(e);else res(String(x));}));
 const PORT=4321;
 express()
   .get('/write/:what', async r => {
