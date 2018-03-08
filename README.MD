@@ -1,11 +1,7 @@
-git clone https://github.com/GossJS/express_starters1.git x && cd x && git checkout step2esm
-
-или
-
-git clone -b step2esm https://github.com/GossJS/express_starters1.git x && cd x
-
-yarn install
+mkdir $(date +%Y%m%d_%H%M%S) && cd $_ && git clone -b files https://github.com/GossJS/express_starters1.git . && yarn install
 
 yarn start
 
-curl localhost:4321/add/34/43
+curl localhost:4321/write/something
+
+curl localhost:4321/read
