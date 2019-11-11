@@ -11,9 +11,11 @@ const UserSchema = new m.Schema({
    "password": {
      "type": "string"
    }
-}, {"collection": "userlist"}
+}, { "collection": "userlist" }
 );
 
-const User = conn.model( null, UserSchema );
+const User = conn.model(null, UserSchema);
 
-export {User};
+export { User };
+// экспортируем сразу модель, а могли бы экспортировать mongoose (m)
+// там коллекция называется userlist, а не users – поэтому строка 14 и null в строке 17
