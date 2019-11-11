@@ -8,9 +8,8 @@ export default async r => {
   try {
     const result =   await User.remove({ username: login, password }) ;
     if ( result.result.n === 0 ) throw 'Nothing to delete!';
-    console.log (result.result.n)
     r.res.json(result);
   } catch(e) {
     r.res.end(e);
   }
-}
+};
