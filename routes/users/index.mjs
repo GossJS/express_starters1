@@ -6,7 +6,7 @@ import updateUserController from '../../controllers/update-user';
 import getUserController from '../../controllers/get-user';
 
 
-export default class Router{
+export default class Router {
   static rtr(x){
     const r = x.Router();
     r
@@ -19,13 +19,13 @@ export default class Router{
 
     r
       .route('/simple-list')
-      .get( r=>r.res.render('simple-list', {o: [ {login: 'Ilya'}, {login: 'Daniel'}   ]}) )
+      .get(r => r.res.render('simple-list', { o: [{ login: 'Ilya' }, { login: 'Daniel' } ] }) )
     ;
 
     r
       .route('/:username')
-      .get( getUserController )
+      .get(getUserController)
     ;
     return r;
   }
-}
+};
