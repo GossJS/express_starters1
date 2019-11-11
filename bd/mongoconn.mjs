@@ -5,7 +5,7 @@ let User;
 
 (async () => {
     const conn = await m.createConnection(
-     'mongodb://reader:12332@151.248.115.32/readusers', 
+     'mongodb://reader:123321@151.248.115.32/readusers', 
      { useNewUrlParser: true },
      e => e ? console.error('STOP') : console.log('Good')
     );
