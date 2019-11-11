@@ -2,7 +2,7 @@ added pug, controllers, class router
 
 git clone -b step8-class-pug-xprs-controllers https://github.com/GossJS/express_starters1.git x && cd x && yarn 
 
-yarn run dev:start
+yarn dev:start
 
 List
 
