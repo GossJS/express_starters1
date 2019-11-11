@@ -7,4 +7,4 @@ export default async r => {
   if (x) return r.res.send('User already exists!');
   const newUser = new User( {username:login, password});
   r.res.status(201).json( await newUser.save());
-}
+};
