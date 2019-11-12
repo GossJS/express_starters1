@@ -1,8 +1,14 @@
-added pug, controllers, class router
+Пример приложения, реализующего REST на Express
+
+с использованием pug, controllers, class router
+
+и подключения к MongoDB
+
+---
 
 git clone -b step8-class-pug-xprs-controllers https://github.com/GossJS/express_starters1.git x && cd x && yarn 
 
-yarn dev:start
+```yarn dev:start```
 
 List
 
