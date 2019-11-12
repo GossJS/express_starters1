@@ -1,11 +1,15 @@
 import m from 'mongoose';
+import dotenv from 'dotenv';
 
 m.Promise = global.Promise;
+dotenv.config({ path: './bd/.env' });
+const { cnstr } = process.env;
+
 let User;
 
 (async () => {
     const conn = await m.createConnection(
-     'mongodb://reader:123321@151.248.115.32/readusers', 
+     cnstr, 
      { useNewUrlParser: true },
      e => e ? console.error('STOP') : console.log('Good')
     );
