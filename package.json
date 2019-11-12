@@ -18,6 +18,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "compression": "^1.7.0",
+    "dotenv": "^8.2.0",
     "express": "^4.15.4",
     "jsonfile-promised": "^0.0.1",
     "lodash": "^4.17.4",
