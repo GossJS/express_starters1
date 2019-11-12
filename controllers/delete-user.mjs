@@ -6,10 +6,11 @@ export default async r => {
   const list = await User.find();
   if (list.length < 5) return r.res.end('first records NOT deleted'); // для целей этого примера только
   try {
-    const result =   await User.remove({ username: login, password }) ;
+    const result =   await User.remove({ login, password }) ;
     if ( result.result.n === 0 ) throw 'Nothing to delete!';
     r.res.json(result);
   } catch(e) {
     r.res.end(e);
   }
 };
+
