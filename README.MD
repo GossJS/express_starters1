@@ -9,6 +9,8 @@
 https://github.com/GossJS/mongoose_experiments – подключение монгузом в подробностях
 
 ---
+В строке подключения (./bd/.env) указано подключение для чтения. При этом DELETE обвалится с необработанным исключением. Вам нужно здесь написать подключение на чтение и запись.
+---
 
 git clone -b step8-class-pug-xprs-controllers https://github.com/GossJS/express_starters1.git x && cd x && yarn 
 
