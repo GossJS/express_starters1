@@ -6,6 +6,8 @@
 
 то создание нового юзера не будет происходить (обработанная ошибка 500), а редактирование будет вылетать
 
+https://github.com/GossJS/mongoose_experiments – подключение монгузом в подробностях
+
 ---
 
 git clone -b step8-class-pug-xprs-controllers https://github.com/GossJS/express_starters1.git x && cd x && yarn 
