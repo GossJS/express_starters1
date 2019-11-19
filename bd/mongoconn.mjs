@@ -7,7 +7,7 @@ const { cnstr } = process.env;
 
 
 
-const conn = await m.createConnection(
+const conn = m.createConnection(
  cnstr, 
  { useNewUrlParser: true },
  e => e ? console.error('STOP') : console.log('Good')
