@@ -5,25 +5,23 @@ m.Promise = global.Promise;
 dotenv.config({ path: './bd/.env' });
 const { cnstr } = process.env;
 
-let User;
 
-(async () => {
-    const conn = await m.createConnection(
-     cnstr, 
-     { useNewUrlParser: true },
-     e => e ? console.error('STOP') : console.log('Good')
-    );
 
-    const UserSchema = new m.Schema({
-       "login": {
-         "type": "string"
-       },
-       "password": {
-         "type": "string"
-       }
-    });
-    User = conn.model('User', UserSchema);  
-})();
+const conn = await m.createConnection(
+ cnstr, 
+ { useNewUrlParser: true },
+ e => e ? console.error('STOP') : console.log('Good')
+);
+
+const UserSchema = new m.Schema({
+   "login": {
+     "type": "string"
+   },
+   "password": {
+     "type": "string"
+   }
+});
+const User = conn.model('User', UserSchema);  
 
 export { User };
 
